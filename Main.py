@@ -51,11 +51,11 @@ def main_task():
     for i in range(start_no, 10000):
         try:
             logging.info("downloading comics [%d]" % i)
-            _write_count_no(i)
             img_url = get_url("http://explosm.net/comics/%d/" % i)
             if img_url == '':
                 logging.info("\tpage [%d] is not exits\n" % i)
                 continue
+            _write_count_no(i)
             file_path = os.path.join(comics_path, ".".join([str(i), img_url.split('.')[-1]]))
             logging.info("".join(["\t downloading ", img_url.split('/')[-1], " --> ", file_path]))
             img_download(img_url, file_path)
